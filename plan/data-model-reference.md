@@ -1,6 +1,6 @@
 # HomeChow Data Model Reference (ERD)
 
-Status: **draft — review alongside plan v3**
+Status: **draft review alongside plan v3**
 Source: `backend-implementation-plan.md` §5 (field lists per module) + the
 ADRs. This is the cross-module view the per-module field lists can't give
 you — it exists to catch relationship mistakes *before* migrations exist.
