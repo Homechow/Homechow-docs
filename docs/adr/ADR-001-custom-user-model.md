@@ -30,3 +30,26 @@
   `tests/integration/test_auth.py::test_otp_to_jwt_roundtrip`,
   `::test_staff_email_backend_login`
 - Fork-manifest impact: none (`customer` unforked; `users` is a domain app)
+
+## Amendment (2026-06-20): alternate logins by phone or email
+
+The original decision stands — **phone remains the account identity**
+(`USERNAME_FIELD`, required, unique) and registration is phone-OTP, with
+email optional. We additionally allow **alternate logins** for accounts that
+opt in, without relaxing that invariant:
+
+- **Password login** — `POST /auth/login {identifier, password}` where
+  `identifier` is the phone (E.164) or the email. A user enables it by setting
+  a usable password via `POST /auth/set-password {password, email?}`
+  (mobile users start with an unusable password, so OTP-only accounts cannot
+  password-login).
+- **Email OTP login** — `/auth/otp/request` and `/auth/otp/verify` now accept
+  an email `identifier`. An email code is only issued to an **existing**
+  account (no email-only signup), and email verify logs in rather than
+  creating an account. The OTP store (`PhoneOTP.phone`) was widened to 254
+  chars to hold either identifier; `sent_via` records the channel.
+
+Constraints kept: no email-only accounts (email verify on an unknown address
+returns `no_account`); responses stay non-enumerating; `EmailBackend` still
+serves staff dashboard login. Net change is additive — no new user-model
+fields, one widening migration on `PhoneOTP`.

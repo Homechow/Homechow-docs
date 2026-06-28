@@ -1,6 +1,8 @@
 # ADR-010: Back-office — Oscar dashboard, staff-only; chefs/riders are API-only
 
-- Status: accepted (2026-06-13)
+- Status: accepted (2026-06-13) — amended by ADR-016 (a branded `/staff/`
+  console is added beside Oscar's dashboard; the "Oscar dashboard is the *only*
+  back-office / no separate ops surface" clause is superseded, the rest stands)
 - Key question: Who manages the store, with what tool?
   (Oscar: `ref/apps/dashboard` — the dashboard fully replaces Django
   admin; admin is unsupported for store management; `oscar-dashboard`)

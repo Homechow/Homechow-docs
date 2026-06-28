@@ -3,7 +3,8 @@
 Architecture decision records for the HomeChow backend, written to the
 template in `oscar-architecture` (Code Examples). These files are the
 audit trail the framework's upgrade and quarterly-review procedures
-consume; they move into `homechow-backend/docs/adr/` in the first commit.
+consume; they move into `homechow-backend/docs/adr/` in the first commit
+(M0). Source of each decision: `plan/backend-implementation-plan.md` §2,
 as revised in the review of 2026-06-12/13.
 
 | ADR | Decision | Status |
@@ -22,6 +23,8 @@ as revised in the review of 2026-06-12/13.
 | [ADR-012](ADR-012-search.md) | SearchGateway over Postgres FTS+geo; Solr deferred | accepted |
 | [ADR-013](ADR-013-realtime.md) | Django Channels + polling fallback | accepted |
 | [ADR-014](ADR-014-hidden-features.md) | Hide Oscar reviews/wishlists; domain replacements | accepted |
+| [ADR-015](ADR-015-image-handling.md) | Cloudflare Images (direct upload) + R2 for KYC docs | accepted |
+| [ADR-016](ADR-016-staff-console.md) | Branded `/staff/` console (BS5+htmx+Alpine) beside Oscar dashboard | accepted — amends ADR-010 |
 
 Process: new architecturally-significant decisions get the next number and
 a PR touching this index. A superseded ADR is never deleted — its status
